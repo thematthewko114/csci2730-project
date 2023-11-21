@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
-contract NFTMarketplace {
+contract NFTMarket {
     struct Listing {
         uint256 price;
         address seller;
@@ -14,26 +14,26 @@ contract NFTMarketplace {
     modifier isNFTOwner(address nftAddress, uint256 tokenId) {
         require(
             IERC721(nftAddress).ownerOf(tokenId) == msg.sender,
-            "MRKT: Not the owner"
+            "You are not the owner of this NFT"
         );
         _;
     }
 
     modifier validPrice(uint256 _price) {
-        require(_price > 0, "MRKT: Price must be > 0");
+        require(_price > 0, "The price must be greater than 0");
         _;
     }
 
     modifier isNotListed(address nftAddress, uint256 tokenId) {
         require(
             listings[nftAddress][tokenId].price == 0,
-            "MRKT: Already listed"
+            "This NFT is already listed"
         );
         _;
     }
 
     modifier isListed(address nftAddress, uint256 tokenId) {
-        require(listings[nftAddress][tokenId].price > 0, "MRKT: Not listed");
+        require(listings[nftAddress][tokenId].price > 0, "This NFT is not listed");
         _;
     }
 
@@ -74,7 +74,7 @@ contract NFTMarketplace {
         require(
             nftContract.isApprovedForAll(msg.sender, address(this)) ||
                 nftContract.getApproved(tokenId) == address(this),
-            "MRKT: No approval for NFT"
+            "This NFT is not approved"
         );
         listings[nftAddress][tokenId] = Listing({
             price: price,
@@ -114,7 +114,7 @@ contract NFTMarketplace {
     {
         Listing memory listing = listings[nftAddress][tokenId];
 
-        require(msg.value == listing.price, "MRKT: Incorrect ETH supplied");
+        require(msg.value == listing.price, "The NFT price and the purchase price does not match");
 
 		    delete listings[nftAddress][tokenId];
 
@@ -125,7 +125,7 @@ contract NFTMarketplace {
         );
 
         (bool sent, ) = payable(listing.seller).call{value: msg.value}("");
-        require(sent, "Failed to transfer eth");
+        require(sent, "The NFT price cannot be sent to the buyer");
 
         emit ListingPurchased(nftAddress, tokenId, listing.seller, msg.sender);
     }

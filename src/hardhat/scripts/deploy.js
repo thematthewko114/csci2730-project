@@ -12,15 +12,15 @@ async function main() {
   console.log("Celo NFT deployed to:", celoNftContract.target);
 
   // Load the marketplace contract artifacts
-  const NFTMarketplace = await hre.ethers.deployContract(
-    "NFTMarketplace"
+  const NFTMarket = await hre.ethers.deployContract(
+    "NFTMarket"
   );
 
   // Wait and Deploy the contract
-   await NFTMarketplace.waitForDeployment()
+   await NFTMarket.waitForDeployment()
 
   // Log the address of the new contract
-  console.log("NFT Marketplace deployed to:", NFTMarketplace.target);
+  console.log("NFT Market deployed to:", NFTMarket.target);
 }
 
 main().catch((error) => {

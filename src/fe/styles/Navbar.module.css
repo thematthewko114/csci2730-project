@@ -1,0 +1,25 @@
+.navbar {
+    display: flex;
+    column-gap: 2em;
+    align-items: center;
+    background-color: purple;
+    padding: 1em 0 1em 0;
+    font-size: 16px;
+    width: 100%;
+}
+
+.navbar a:hover {
+    font-weight: bold;
+}
+
+.link{
+    margin: 0 16px
+}
+
+.left{
+    margin-left: 16px;
+}
+.right{
+    margin-left: auto;
+    margin-right: 36px;
+}
