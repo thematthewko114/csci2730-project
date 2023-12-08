@@ -3,13 +3,13 @@ const hre = require("hardhat");
 async function main() {
 
   // Load the NFT contract artifacts
-  const celoNftContract = await hre.ethers.deployContract("CeloNFT");
+  const CourseNftContract = await hre.ethers.deployContract("CourseNFT");
   
   // Wait and Deploy the contract
-  await celoNftContract.waitForDeployment();
+  await CourseNftContract.waitForDeployment();
 
   // Print the address of the NFT contract
-  console.log("Celo NFT deployed to:", celoNftContract.target);
+  console.log("Sepolia NFT deployed to:", CourseNftContract.target);
 
   // Load the marketplace contract artifacts
   const NFTMarket = await hre.ethers.deployContract(

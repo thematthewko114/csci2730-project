@@ -5,10 +5,10 @@ require("dotenv").config({ path: ".env" });
 module.exports = {
   solidity: "0.8.20",
   networks: {
-    alfajores: {
+    sepolia: {
       url: process.env.RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
-      chainId: 44787, // Chain ID for the Alfajores Network
+      chainId: 11155111, // Chain ID for the Alfajores Network
     },
   },
 };
