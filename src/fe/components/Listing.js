@@ -3,45 +3,34 @@
 import { useEffect, useState } from "react";
 import { useAccount, erc721ABI } from "wagmi";
 import { readContract } from "@wagmi/core";
-import styles from "../styles/Listing.module.css";
-// import { formatEther } from "ethers/lib/utils";
+import Link from "next/link";
 
 export default function Listing(props) {
-  // State variables to hold information about the NFT
   const [imageURI, setImageURI] = useState("");
   const [name, setName] = useState("");
 
-  // Loading state
   const [loading, setLoading] = useState(true);
 
   const { address } = useAccount();
   
-  // Check if the NFT seller is the connected user
   const isOwner = address.toLowerCase() === props.seller.toLowerCase();
 
-  // Fetch NFT details by resolving the token URI
   async function fetchNFTDetails() {
     try {
-      // Get token URI from contract
      let tokenURI = await readContract({
         address: props.nftAddress,
         abi: erc721ABI,
         functionName: "tokenURI",
         args: [0],
       });
-      // If it's an IPFS URI, replace it with an HTTP Gateway link
       tokenURI = tokenURI.replace("ipfs://", "https://gateway.pinata.cloud/ipfs/");
 
-      // Resolve the Token URI
       const metadata = await fetch(tokenURI);
       const metadataJSON = await metadata.json();
 
-      // Extract image URI from the metadata
       let image = metadataJSON.imageUrl;
-      // If it's an IPFS URI, replace it with an HTTP Gateway link
       image = image.replace("ipfs://", "https://gateway.pinata.cloud/ipfs/");
 
-      // Update state variables
       setName(metadataJSON.name);
       setImageURI(image);
       setLoading(false);
@@ -51,7 +40,6 @@ export default function Listing(props) {
     }
   }
 
-  // Fetch the NFT details when component is loaded
   useEffect(() => {
     fetchNFTDetails();
   }, []);
@@ -59,21 +47,25 @@ export default function Listing(props) {
   return (
     <div>
       {loading ? (
-        <span>Loading...</span>
+        <div className="card">
+          <div className="text-white text-center my-auto h-full">Loading NFT...</div>
+        </div>
       ) : (
-        <div className={styles.card}>
-          <img src={imageURI} />
-          <div className={styles.container}>
-            <span>
-              <b>
-                {name} - #{props.tokenId}
-              </b>
-            </span>
-            <span>Price: {props.price/1000000000000000000} CELO</span>
-            <span>
-              Seller: {isOwner ? "You" : props.seller.substring(0, 6) + "..."}
-            </span>
-          </div>
+        <div className="card">
+          <Link href={`/${props.nftAddress}/${props.tokenId}`}>
+            <img src={imageURI} alt="NFT Image Unavailable" key={Date.now()} />
+            <div className="listing_container">
+              <span>
+                <b>
+                  {name} - #{props.tokenId}
+                </b>
+              </span>
+              <span>Price: {props.price/1000000000000000000} Sepolia</span>
+              <span>
+                Seller: {isOwner ? "You" : props.seller.substring(0, 6) + "..."}
+              </span>
+            </div>
+          </Link>
         </div>
       )}
     </div>

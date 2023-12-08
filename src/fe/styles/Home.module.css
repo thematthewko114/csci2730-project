@@ -1,4 +1,3 @@
-.container {
-    display: flex;
-    flex-wrap: wrap;
+.home_container {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-5 px-4 md:px-12 mx-auto mt-12
 }

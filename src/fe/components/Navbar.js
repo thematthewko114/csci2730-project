@@ -1,16 +1,15 @@
 import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import styles from "../styles/Navbar.module.css";
 
 export default function Navbar() {
   return (
-    <div className={styles.navbar} suppressHydrationWarning>
-        <div className={styles.left}>
-            <Link href="/" className={styles.link}>Home</Link>
-            <Link href="/create">Create Listing</Link>
+    <div className="navbar" suppressHydrationWarning>
+        <div className="left">
+            <Link href="/" className="link">Home</Link>
+            <Link href="/create" className="ml-8">Sell</Link>
         </div>
         
-        <div className={styles.right}>
+        <div className="right">
            <ConnectButton /> 
         </div>
     </div>

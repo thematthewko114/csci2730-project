@@ -14,6 +14,6 @@ contract CourseNFT is ERC721 {
     // Hardcoded token URI will return the same metadata
     // for each NFT
     function tokenURI(uint) public pure override returns (string memory) {
-        return "ipfs://bafkreifxhmqzr6oponz4y7fha6efrbzj6p6tk7wlluqkl5zolkhqz3wi7m";
+        return "ipfs://bafkreih4zukbxmfnl2g5bi7ji7sc5zth6yzryreu3bh4pa2na7hk3kfe7m";
     }
 }

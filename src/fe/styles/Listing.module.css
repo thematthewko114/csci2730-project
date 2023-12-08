@@ -1,29 +1,17 @@
 .card {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    width: 256px;
-    border-radius: 5%;
-    cursor: pointer;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    background-color: grey;
+    @apply shadow-md w-full rounded-2xl cursor-pointer my-4 bg-gray-500 transition-all duration-300 h-[332px]
 }
 
 .card img {
     width: 100%;
-    border-top-left-radius: 5%;
-    border-top-right-radius: 5%;
+    @apply h-60 w-full rounded-t-3xl items-center
 }
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    @apply shadow-black -translate-y-2
 }
 
-/* Add some padding inside the card container */
-.container {
-    display: flex;
-    flex-direction: column;
-    padding: 2px 16px;
+.listing_container {
+    @apply flex flex-col px-4 my-2
 }

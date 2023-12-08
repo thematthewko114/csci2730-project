@@ -6,18 +6,18 @@ import "../styles/globals.css";
 import { publicProvider } from "wagmi/providers/public";
 import { createConfig, WagmiConfig, configureChains } from "wagmi";
 import { createPublicClient, http } from "viem";
-import { celoAlfajores } from "@wagmi/core/chains";
+import { sepolia } from "@wagmi/core/chains";
 import { getDefaultWallets } from "@rainbow-me/rainbowkit";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import React from "react";
 
 const { chains } = configureChains(
-  [celoAlfajores],
+  [sepolia],
   [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: "Celo NFT Marketplace",
+  appName: "Sepolia NFT Market",
   projectId: "80d507b460c69cbaaa0659957c484631",
   chains,
 });
@@ -25,7 +25,7 @@ const { connectors } = getDefaultWallets({
 const config = createConfig({
   autoConnect: true,
   publicClient: createPublicClient({
-    chain: celoAlfajores,
+    chain: sepolia,
     transport: http()
   }),
   connectors

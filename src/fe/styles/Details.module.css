@@ -1,54 +1,39 @@
-.container {
-    display: flex;
-    width: 80%;
-    margin: auto;
-    margin-top: 2rem;
-  }
-  
-  .details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .details img {
-    width: 512px;
-    border-radius: 2rem;
-  }
-  
-  .details span {
-    margin: 0.25rem;
-    padding: 1rem;
-    width: 100%;
-    text-align: center;
-    background-color: lightblue;
-    border-radius: 1rem;
-  }
-  
-  .details span:first-of-type {
-    margin-top: 1rem;
-  }
-  
-  .options {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .updateListing {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .updateListing input {
-    margin-right: 1rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #cccccc;
-  }
-  
-  .btn {
-    margin-top: 1rem;
-    padding: 0.5rem;
-  }
+.detail_container {
+  @apply flex w-4/5 m-auto mt-8
+}
+
+.detail_info {
+  @apply flex flex-col items-center
+}
+
+.detail_info img {
+  @apply w-[512px] rounded-[2rem]
+}
+
+.detail_info span {
+  @apply m-1 p-4 w-full text-center bg-blue-700 rounded-2xl
+}
+
+.detail_info span:first-of-type {
+  @apply mt-4
+}
+
+.options {
+  @apply flex-grow flex flex-col items-center text-black
+}
+
+.update_listing {
+  @apply flex justify-between
+}
+
+.update_listing input {
+  @apply mr-4 p-2 rounded-lg border-black border-2
+}
+
+.detail_btn {
+  @apply mt-4 p-2 px-6 py-3 rounded-xl font-semibold text-xl cursor-pointer border-2 border-transparent hover:border-black
+}
+
+.update_btn {
+  @apply p-2 px-4 py-2 rounded-lg font-medium text-base cursor-pointer border-2 border-transparent hover:border-black
+}

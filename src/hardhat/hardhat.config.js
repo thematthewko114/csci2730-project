@@ -8,7 +8,7 @@ module.exports = {
     sepolia: {
       url: process.env.RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
-      chainId: 11155111, // Chain ID for the Alfajores Network
+      chainId: 11155111,
     },
   },
 };
