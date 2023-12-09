@@ -11,8 +11,12 @@
 }
 
 .left{
-    @apply ml-4
+    @apply ml-4 flex
 }
 .right{
     @apply ml-auto mr-9
+}
+
+.site_name {
+    @apply font-bold mr-8 text-xl
 }

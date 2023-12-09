@@ -5,8 +5,9 @@ export default function Navbar() {
   return (
     <div className="navbar" suppressHydrationWarning>
         <div className="left">
-            <Link href="/" className="link">Home</Link>
-            <Link href="/create" className="ml-8">Sell</Link>
+          <div className="site_name">NFT Market</div>
+          <Link href="/" className="link">Home</Link>
+          <Link href="/create" className="ml-8">Sell</Link>
         </div>
         
         <div className="right">

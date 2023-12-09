@@ -29,12 +29,15 @@ export default function Create() {
       if (!isValidAddress) {
         throw new Error(`Invalid contract address`);
       }
+      else if(price === "" || price === "0") {
+        throw new Error(`Please enter a valid price`);
+      }
 
       await requestApproval();
       await createListing();
       router.push(`/${nftAddress}/${tokenId}`);
     } catch (error) {
-      console.error(error);
+      alert(error.message);
     }
 
     setLoading(false);
@@ -88,7 +91,7 @@ export default function Create() {
       </Head>
       <Navbar />
 
-      <div className="container">
+      <div className="create_container">
         <input
           type="text"
           placeholder="NFT Address"
@@ -114,7 +117,7 @@ export default function Create() {
           }}
         />
         <button onClick={handleCreateListing} disabled={loading}>
-          {loading ? "Loading..." : "Create"}
+          {loading ? "Loading..." : "Sell"}
         </button>
 
         {showListingLink && (
