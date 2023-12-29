@@ -1,4 +1,4 @@
-# CSCI2730 Project - NFT Market
+# NFT Market
 Welcome to the code source for the course project of CSCI2730 from CUHK, taught by [Mr. Jackey Cheung](https://www.cse.cuhk.edu.hk/people/faculty/jackey-cheung/).
 
 # Project Features
